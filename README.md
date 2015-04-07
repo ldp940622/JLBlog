@@ -1,2 +1,2 @@
 # JLBlog
-Personal Blog System based on ThinkPHP
+Personal Blog System based on ThinkPHP!!
