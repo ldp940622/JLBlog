@@ -6,7 +6,8 @@ class IndexController extends Controller {
 
 	public function _before_index() {
 		//前置操作，在用户点击管理按钮后跳转到index页面
-		if (empty(cookie('jl_status'))) {
+		$cookie_value = cookie('jl_status');
+		if (empty($cookie_value)) {
 			//判断cookies,不存在，跳转到login action
 			$this->redirect('Index/login', '', 0, '');
 		}
