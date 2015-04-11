@@ -38,7 +38,7 @@
                         <a href="#">Home</a>
                     </li>
                     <li>
-                        <a href="#">Home</a>
+                        <a href="./addArticle">Add Your Article</a>
                     </li>
                     <li>
                         <a href="#">Home</a>
@@ -189,15 +189,18 @@
             </div>
         </nav>
         <div class="container" id="page-wrapper">
-            <div class="jumbotron">
-                <h1>Welcome to manage JLBlog!</h1>
-            </div>
+            <block name="content">
+                <div class="jumbotron">
+                    <h1>Welcome to manage JLBlog!</h1>
+                </div>
+            </block>
         </div>
     </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="__PUBLIC__/js/bootstrap.min.js"></script>
+    <block name="js"></block>
 </body>
 
 </html>
