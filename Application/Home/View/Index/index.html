@@ -6,7 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-    <title>JLBlog —Beta</title>
+    <block name="title">
+        <title>JLBlog —Beta</title>
+    </block>
     <!-- Bootstrap -->
     <link href="__PUBLIC__/css/bootstrap.min.css" rel="stylesheet">
     <link href="__PUBLIC__/css/offcanvas.css" rel="stylesheet">
@@ -36,14 +38,14 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="__APP__">
                     <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
                 </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="#">随笔</a>
+                        <a href="#">TimeLine</a>
                     </li>
                     <li>
                         <a href="#">About</a>
@@ -70,29 +72,31 @@
                 <p class="pull-right visible-xs">
                     <button type="button" class="btn btn-primary btn-xs" id="slider-btn" data-toggle="offcanvas">SliderBar></button>
                 </p>
-                <volist name="article_list" id="article">
-                    <div class="summary">
-                        <div class="page-header">
-                            <h1>{$article.title}</h1>
+                <block name="content">
+                    <volist name="article_list" id="article">
+                        <div class="summary">
+                            <div class="page-header">
+                                <h1>{$article.title}</h1>
+                            </div>
+                            <div>{$article.summary}</div>
+                            <div>...</div>
+                            <p class="page-footer">
+                                <p class="details-btn">
+                                    <a class="btn btn-primary" href="__CONTROLLER__/details/id/{$article.id}" role="button">View details &raquo;</a>
+                                </p>
+                                <hr>
+                                <p class="details-bar">
+                                    <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
+                                    <span class="details-items">{$article.date|substr=0,10}</span>
+                                    <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+                                    <span class="details-items">{$article.views}</span>
+                                    <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
+                                    <span class="details-items">32</span>
+                                </p>
+                            </p>
                         </div>
-                        <div>{$article.summary}</div>
-                        <div>...</div>
-                        <p class="page-footer">
-                            <p class="details-btn">
-                                <a class="btn btn-primary" href="#" role="button">View details &raquo;</a>
-                            </p>
-                            <hr>
-                            <p class="details-bar">
-                                <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
-                                <span class="details-items">{$article.date|substr=0,10}</span>
-                                <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
-                                <span class="details-items">30</span>
-                                <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
-                                <span class="details-items">32</span>
-                            </p>
-                        </p>
-                    </div>
-                </volist>
+                    </volist>
+                </block>
             </div>
             <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
                 <div class="slider">

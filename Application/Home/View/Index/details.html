@@ -1,0 +1,37 @@
+<extend name="index" />
+<block name="title">
+<title>{$article_details.title} —JLBlog</title>
+</block>
+<block name="content">
+    <div class="detail">
+        <ol class="breadcrumb">
+            <li><a href="__APP__">Home</a></li>
+            <li class="active">{$article_details.title}</li>
+        </ol>
+        <div class="page-header">
+            <h1>{$article_details.title}</h1>
+            <div class="text-right">
+                <p class="details-bar">
+                    <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
+                    <span class="details-items">{$article_details.date|substr=0,10}</span>
+                </p>
+            </div>
+        </div>
+        <div>{$article_details.content}</div>
+        <div class="page-header">
+            <h2>最新评论</h2>
+        </div>
+        <ul class="media-list">
+            <li class="media">
+                <div class="media-left">
+                    <a href="#">
+                        <img class="media-object" src="..." alt="...">
+                    </a>
+                </div>
+                <div class="media-body">
+                    <h4 class="media-heading">Media heading</h4> ...
+                </div>
+            </li>
+        </ul>
+    </div>
+</block>

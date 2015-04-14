@@ -47,6 +47,7 @@ class IndexController extends Controller {
 	}
 	public function login() {
 		//登录界面
+		//login页面还是要判断cookie，如果符合条件直接进index
 		$cookie_value = cookie('jl_status');
 		if (!empty($cookie_value)) {
 			redirect($this->index_url, 0, '');
@@ -66,10 +67,13 @@ class IndexController extends Controller {
 		} elseif (IS_POST) {
 			$Article = M('Article');
 			if ($Article->create()) {
+				//写入date
+				$Article->date = date("Y-m-d H:i:s", time());
 				$result = $Article->add(); // 写入数据到数据库
 				if ($result) {
 					// 如果主键是自动增长型 成功后返回值就是最新插入的值
-					$insertId = $result;
+					// 跳转到页面
+					$this->redirect('Home/Index/details', array('id' => $result), 0, '');
 				}
 			}
 		}

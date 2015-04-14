@@ -5,7 +5,7 @@
             <div class="form-group">
                 <label for="Title" class="col-md-1 control-label">Title:</label>
                 <div class="col-md-5">
-                    <input type="text" class="form-control" id="Title" name="title" placeholder="Enter Title">
+                    <input type="text" class="form-control" id="Title" name="title" placeholder="Enter Title" required />
                 </div>
             </div>
             <div class="form-group">
@@ -21,7 +21,7 @@
             <div class="form-group">
                 <label for="Tags" class="col-md-1 control-label">Tags:</label>
                 <div class="col-md-5">
-                    <input type="text" class="form-control" id="Tags" name="tags" placeholder="Enter Tags  (Most 5,use ',' to separate)">
+                    <input type="text" class="form-control" id="Tags" name="tags" placeholder="Enter Tags  (Most 5,use ',' to separate)" required>
                 </div>
             </div>
             <div class="form-group">
@@ -30,11 +30,12 @@
                     <script id="container" name="content" type="text/plain"></script>
                 </div>
             </div>
-            <input class="hidden" name="date" value="<php>echo date("Y-m-d H:i:s" ,time());</php>">
-            <input class="hidden" name="id" value="<php>echo time();</php>">
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <input class="hidden" name="summary" id="summary">
+            <input type="submit" class="btn btn-primary" value="Submit">
         </form>
     </div>
+</block>
+<block name="js">
     <!-- 配置文件 -->
     <script type="text/javascript" src="__PUBLIC__/ueditor/ueditor.config.js"></script>
     <!-- 编辑器源码文件 -->
@@ -42,7 +43,12 @@
     <!-- 实例化编辑器 -->
     <script type="text/javascript">
     var editor = UE.getEditor('container');
+    $(document).ready(function() {
+        $('input:submit').click(function() {
+            var summary = editor.getPlainTxt().substr(0,5);
+            $("#summary").val(summary);
+            //$('form').submit();
+        });
+    });
     </script>
-</block>
-<block name="js">
 </block>
