@@ -1,6 +1,6 @@
 <extend name="index" />
 <block name="title">
-<title>{$article_details.title} —JLBlog</title>
+    <title>{$article_details.title} —JLBlog</title>
 </block>
 <block name="content">
     <div class="detail">
@@ -18,20 +18,9 @@
             </div>
         </div>
         <div>{$article_details.content}</div>
-        <div class="page-header">
-            <h2>最新评论</h2>
-        </div>
-        <ul class="media-list">
-            <li class="media">
-                <div class="media-left">
-                    <a href="#">
-                        <img class="media-object" src="..." alt="...">
-                    </a>
-                </div>
-                <div class="media-body">
-                    <h4 class="media-heading">Media heading</h4> ...
-                </div>
-            </li>
-        </ul>
+        <!-- UY BEGIN -->
+        <div id="uyan_frame"></div>
+        <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2023350"></script>
+        <!-- UY END -->
     </div>
-</block>
+</block>    
