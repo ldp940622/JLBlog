@@ -18,9 +18,9 @@
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-  <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-  <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
-  <![endif]-->
+    <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 </head>
 
 <body>
@@ -59,8 +59,7 @@
                 </ul>
                 <form class="navbar-form navbar-right" role="search">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search">
-                    </div>
+                        <input type="text" class="form-control" placeholder="Search"></div>
                     <button type="submit" class="btn btn-default">Search</button>
                 </form>
             </div>
@@ -89,7 +88,12 @@
                                     <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
                                     <span class="details-items">{$article.date|substr=0,10}</span>
                                     <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
-                                    <span class="details-items">{$article.views}</span>
+                                    <span class="details-items">
+                                        <!-- UYAN COUNT BEGIN -->
+                                        <a href="__CONTROLLER__/details/id/{$article.id}#" id="uyan_count_unit" du="" su="">0条评论</a>
+                                        <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=02023350"></script>
+                                        <!-- 如果已经过加载此行JS，即可不用重复加载 -->
+                                        <!-- UYAN COUNT END --> </span>
                                     <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
                                     <span class="details-items">32</span>
                                 </p>
@@ -112,21 +116,21 @@
                     <ul class="nav nav-pills" role="tablist">
                         <li role="presentation">
                             <a href="#">
-                Home
-                <span class="label label-primary">3</span>
-              </a>
+                                Home
+                                <span class="label label-primary">3</span>
+                            </a>
                         </li>
                         <li role="presentation">
                             <a href="#">
-                Profile
-                <span class="label label-primary">1</span>
-              </a>
+                                Profile
+                                <span class="label label-primary">1</span>
+                            </a>
                         </li>
                         <li role="presentation">
                             <a href="#">
-                Messages
-                <span class="label label-primary">2</span>
-              </a>
+                                Messages
+                                <span class="label label-primary">2</span>
+                            </a>
                         </li>
                     </ul>
                 </div>
