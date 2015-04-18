@@ -76,6 +76,12 @@ body {
     border: 0px;
 }
 
+.comment-count,
+.comment-count:hover {
+    text-decoration: none;
+    color: gray;
+}
+
 footer p {
     color: white;
 }

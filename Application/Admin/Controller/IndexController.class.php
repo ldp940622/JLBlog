@@ -31,7 +31,8 @@ class IndexController extends Controller {
 			$username = I('post.username');
 			$password = I('post.password');
 			//用户名密码判断
-			if ($username == 'root' && $password == 'root') {
+			$User = M('User')->find();
+			if ($username == $User['username'] && $password == $User['password']) {
 				//正确，存cookie
 				cookie('status', md5('success'), array('expire' => 3600, 'prefix' => 'jl_'));
 				redirect(cookie('jl_return_url'), 0, '');
@@ -65,6 +66,19 @@ class IndexController extends Controller {
 			$this->assign('category_list', $category_list);
 			$this->display();
 		} elseif (IS_POST) {
+			$tags = I('post.tags');
+			// 将传输来的Tag字符串，截取成数组
+			$tagArr = explode(',', $tags);
+			$Tag = M('Tag');
+			// 蝴蝶Tag.name数组
+			$tag_list = $Tag->getField('name', true);
+			foreach ($tagArr as $tag) {
+				// 循环比较
+				if (!in_array($tag, $tag_list)) {
+					$data['name'] = $tag;
+					$Tag->add($data);
+				}
+			}
 			$Article = M('Article');
 			if ($Article->create()) {
 				//写入date
@@ -73,7 +87,7 @@ class IndexController extends Controller {
 				if ($result) {
 					// 如果主键是自动增长型 成功后返回值就是最新插入的值
 					// 跳转到页面
-					$this->redirect('Home/Index/details', array('id' => $result), 0, '');
+					$this->redirect('Home/Index/article', array('id' => $result), 0, '');
 				}
 			}
 		}

@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <block name="title">
-        <title>JLBlog —Beta</title>
+        <title>
+            <notempty name="msg">{$msg.type}:{$msg.name} —</notempty>JLBlog —Beta</title>
     </block>
     <!-- Bootstrap -->
     <link href="__PUBLIC__/css/bootstrap.min.css" rel="stylesheet">
@@ -38,28 +39,26 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="__APP__">
+                <a class="navbar-brand" href="__ROOT__">
                     <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
                 </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="#">TimeLine</a>
+                        <a href="__ROOT__/">TimeLine</a>
                     </li>
                     <li>
-                        <a href="#">About</a>
+                        <a href="__ROOT__/about">About</a>
                     </li>
                     <li>
-                        <a href="#">Contact</a>
-                    </li>
-                    <li>
-                        <a href="{$manage_url}">Manage</a>
+                        <a href="__APP__/Admin">Manage</a>
                     </li>
                 </ul>
-                <form class="navbar-form navbar-right" role="search">
+                <form class="navbar-form navbar-right" role="search" method="get" action="__ROOT__/search">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search"></div>
+                        <input type="text" class="form-control" placeholder="Search" name="keyword">
+                    </div>
                     <button type="submit" class="btn btn-default">Search</button>
                 </form>
             </div>
@@ -72,6 +71,12 @@
                     <button type="button" class="btn btn-primary btn-xs" id="slider-btn" data-toggle="offcanvas">SliderBar></button>
                 </p>
                 <block name="content">
+                    <notempty name="msg">
+                        <ol class="breadcrumb">
+                            <li><a href="__ROOT__">Home</a></li>
+                            <li class="active">搜索到{$msg.type}为{$msg.name}的记录:</li>
+                        </ol>
+                    </notempty>
                     <volist name="article_list" id="article">
                         <div class="summary">
                             <div class="page-header">
@@ -81,21 +86,20 @@
                             <div>...</div>
                             <p class="page-footer">
                                 <p class="details-btn">
-                                    <a class="btn btn-primary" href="__CONTROLLER__/details/id/{$article.id}" role="button">View details &raquo;</a>
+                                    <a class="btn btn-primary" href="__ROOT__/article/id/{$article.id}.html" role="button">View details &raquo;</a>
                                 </p>
                                 <hr>
                                 <p class="details-bar">
                                     <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
                                     <span class="details-items">{$article.date|substr=0,10}</span>
                                     <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+                                    <span class="details-items">{$article.views}次浏览</span>
+                                    <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
                                     <span class="details-items">
                                         <!-- UYAN COUNT BEGIN -->
-                                        <a href="__CONTROLLER__/details/id/{$article.id}#" id="uyan_count_unit" du="" su="">0条评论</a>
-                                        <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=02023350"></script>
-                                        <!-- 如果已经过加载此行JS，即可不用重复加载 -->
-                                        <!-- UYAN COUNT END --> </span>
-                                    <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
-                                    <span class="details-items">32</span>
+                                        <a href="__ROOT__/article/id/{$article.id}.html#comment" id="uyan_count_unit" du="" su="" class="comment-count">0条评论</a>
+                                        <!-- UYAN COUNT END --> 
+                                    </span>
                                 </p>
                             </p>
                         </div>
@@ -107,39 +111,46 @@
                     <h3>&ensp;Categories</h3>
                     <div class="list-group">
                         <volist name="category_list" id="category">
-                            <a href="#" class="list-group-item" id="category-list">{$category.name}</a>
+                            <a href="__ROOT__/category/id/{$category.id}.html" class="list-group-item" id="category-list">{$category.name}</a>
                         </volist>
                     </div>
                 </div>
                 <div class="slider">
                     <h3>&ensp;Tags</h3>
                     <ul class="nav nav-pills" role="tablist">
-                        <li role="presentation">
-                            <a href="#">
-                                Home
-                                <span class="label label-primary">3</span>
+                        <volist name="tag_list" id="tag">
+                            <li role="presentation">
+                                <a href="__ROOT__/tag/id/{$tag.id}.html">
+                                {$tag.name}
                             </a>
-                        </li>
-                        <li role="presentation">
-                            <a href="#">
-                                Profile
-                                <span class="label label-primary">1</span>
-                            </a>
-                        </li>
-                        <li role="presentation">
-                            <a href="#">
-                                Messages
-                                <span class="label label-primary">2</span>
-                            </a>
-                        </li>
+                            </li>
+                        </volist>
                     </ul>
+                </div>
+                <div class="slider">
+                    <h3>&ensp;Links</h3>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-xs-12 col-md-12">
+                                <a href="https://www.digitalocean.com/?refcode=013a649a7de0" class="thumbnail">
+                                    <img src="__PUBLIC__/pic/do.jpg" alt="DigitalOcean">
+                                </a>
+                            </div>
+                            <div class="col-xs-12 col-md-12">
+                                <a href="https://v2ex.com" class="thumbnail">
+                                    <img src="__PUBLIC__/pic/v2ex@2x.png" alt="V2EX">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="container-fluid">
+    <div class="container">
         <footer>
-            <p class="text-center">&copy; Company 2014</p>
+            <p class="text-center">&copy; 2015 Joseph Lee.</p>
+            <p class="text-center">All rights reserved. </p>
         </footer>
     </div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -153,7 +164,9 @@
         });
     });
     </script>
-    <block name="js"></block>
+    <block name="js">
+        <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=02023350"></script>
+    </block>
 </body>
 
 </html>
