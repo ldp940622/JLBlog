@@ -101,4 +101,7 @@ class IndexController extends Controller {
 			redirect($this->login_url, 0, '');
 		}
 	}
+	public function test() {
+		echo "test";
+	}
 }
