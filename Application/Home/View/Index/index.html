@@ -16,6 +16,7 @@
     <link href="__PUBLIC__/css/bootstrap.min.css" rel="stylesheet">
     <link href="__PUBLIC__/css/offcanvas.css" rel="stylesheet">
     <link href="__PUBLIC__/css/custom.css" rel="stylesheet">
+    <link rel="stylesheet" href="__PUBLIC__/ueditor/third-party/SyntaxHighlighter/shCoreDefault.css">
     <link rel="shortcut icon" href="favicon.ico" />
     <link rel="bookmark" href="favicon.ico" type="image/x-icon" />
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -54,7 +55,7 @@
                         <a href="__ROOT__/about.html">About</a>
                     </li>
                     <li>
-                        <a href="__APP__/Admin">Manage</a>
+                        <a href="__ROOT__/admin.php">Manage</a>
                     </li>
                 </ul>
                 <form class="navbar-form navbar-right" role="search" method="get" action="__ROOT__/search">
@@ -164,15 +165,32 @@
     <script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="__PUBLIC__/js/bootstrap.min.js"></script>
+    <script src="__PUBLIC__/ueditor/third-party/SyntaxHighlighter/shCore.js"></script>
     <script type="text/javascript">
     $(document).ready(function() {
         $('[data-toggle="offcanvas"]').click(function() {
             $('.row-offcanvas').toggleClass('active')
         });
     });
+    SyntaxHighlighter.config.bloggerMode = true;
+    SyntaxHighlighter.all();
     </script>
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {
+        short_name: "jlblog"
+    };
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';
+        ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+    <!-- 多说公共JS代码 end -->
     <block name="js">
-        <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=02023350"></script>
     </block>
 </body>
 

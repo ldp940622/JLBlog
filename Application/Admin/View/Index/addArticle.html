@@ -13,7 +13,7 @@
                 <div class="col-md-2">
                     <select class="form-control" name="category">
                         <volist name="category_list" id="vo">
-                            <option>{$vo.name}</option>
+                            <option value="{$vo.id}">{$vo.name}</option>
                         </volist>
                     </select>
                 </div>
@@ -25,12 +25,17 @@
                 </div>
             </div>
             <div class="form-group">
+                <label for="Summary" class="col-md-1 control-label">Summary:</label>
+                <div class="col-md-5">
+                    <textarea class="form-control" rows="3" id="Summary" name="summary" placeholder="Enter Summary" required></textarea>
+                </div>
+            </div>
+            <div class="form-group">
                 <!-- 加载编辑器的容器 -->
                 <div class="col-md-12">
                     <script id="container" name="content" type="text/plain"></script>
                 </div>
             </div>
-            <input class="hidden" name="summary" id="summary">
             <input type="submit" class="btn btn-primary" value="Submit">
         </form>
     </div>
@@ -44,11 +49,11 @@
     <script type="text/javascript">
     var editor = UE.getEditor('container');
     $(document).ready(function() {
-        $('input:submit').click(function() {
-            var summary = editor.getPlainTxt().substr(0,5);
-            $("#summary").val(summary);
-            //$('form').submit();
-        });
+        // $('input:submit').click(function() {
+        //     var summary = editor.getPlainTxt().substr(0, 120);
+        //     $("#summary").val(summary);
+        //     //$('form').submit();
+        // });
     });
     </script>
 </block>

@@ -87,7 +87,7 @@ class IndexController extends Controller {
 				if ($result) {
 					// 如果主键是自动增长型 成功后返回值就是最新插入的值
 					// 跳转到页面
-					$this->redirect('Home/Index/article', array('id' => $result), 0, '');
+					redirect("/article/id/$result", 0, '');
 				}
 			}
 		}
