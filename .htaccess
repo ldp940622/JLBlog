@@ -6,6 +6,3 @@
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteRule ^(.*)$ index.php/Home/Index/$1 [QSA,PT,L]
 </IfModule>
-order allow,deny
-deny from 183.60.243.234
-allow from all
