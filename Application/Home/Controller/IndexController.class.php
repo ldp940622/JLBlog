@@ -30,7 +30,6 @@ class IndexController extends Controller {
 		$category_list = $Category->select();
 		$tag_list = $Tag->select();
 		$article_details = $Details->where('tb_article.id=' . $id)->join('__CATEGORY__ ON __ARTICLE__.category = __CATEGORY__.id')->find();
-		dump($article_details);
 		if (!$article_details) {
 			header("HTTP/1.0 404 Not Found");
 			$this->display('/404.html');
