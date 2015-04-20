@@ -16,7 +16,8 @@
     <link href="__PUBLIC__/css/bootstrap.min.css" rel="stylesheet">
     <link href="__PUBLIC__/css/offcanvas.css" rel="stylesheet">
     <link href="__PUBLIC__/css/custom.css" rel="stylesheet">
-    <link rel="stylesheet" href="__PUBLIC__/ueditor/third-party/SyntaxHighlighter/shCoreDefault.css">
+    <!-- css block -->
+    <block name="css"></block>
     <link rel="shortcut icon" href="favicon.ico" />
     <link rel="bookmark" href="favicon.ico" type="image/x-icon" />
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -99,9 +100,9 @@
                                     <span class="details-items">{$article.views}次浏览</span>
                                     <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
                                     <span class="details-items">
-                                        <!-- UYAN COUNT BEGIN -->
-                                        <!-- <a href="__ROOT__/article/id/{$article.id}.html#comment" id="uyan_count_unit" du="" su="" class="comment-count">0条评论</a> -->
-                                        <!-- UYAN COUNT END --> 
+                                    <a href="__ROOT__/article/id/{$article.id}.html#comment" class="comment-count">
+                                        <span class="ds-thread-count" data-thread-key="{$article.id}" data-count-type="comments"></span>
+                                    </a>
                                     </span>
                                 </p>
                             </p>
@@ -165,16 +166,6 @@
     <script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="__PUBLIC__/js/bootstrap.min.js"></script>
-    <script src="__PUBLIC__/ueditor/third-party/SyntaxHighlighter/shCore.js"></script>
-    <script type="text/javascript">
-    $(document).ready(function() {
-        $('[data-toggle="offcanvas"]').click(function() {
-            $('.row-offcanvas').toggleClass('active')
-        });
-    });
-    SyntaxHighlighter.config.bloggerMode = true;
-    SyntaxHighlighter.all();
-    </script>
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
     var duoshuoQuery = {
@@ -190,6 +181,7 @@
     })();
     </script>
     <!-- 多说公共JS代码 end -->
+    <!-- js block -->
     <block name="js">
     </block>
 </body>
