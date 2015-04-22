@@ -63,7 +63,7 @@ class IndexController extends Controller {
 			$Category = M('Category');
 			$category_list = $Category->select();
 			$this->assign('category_list', $category_list);
-			$this->display();
+			$this->display('addArticle');
 		} elseif (IS_POST) {
 			$tags = I('post.tags');
 			// 将传输来的Tag字符串，截取成数组
