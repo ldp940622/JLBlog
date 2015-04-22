@@ -14,7 +14,6 @@ class IndexController extends Controller {
 		$this->index_url = U('Index/index');
 		$this->login_url = U('Index/login');
 		$this->addArticle_url = U('Index/addArticle');
-		$this->blog_url = U('Home/Index/index');
 	}
 	public function _before_index() {
 		//前置操作，在用户点击管理按钮后跳转到index页面
@@ -70,7 +69,7 @@ class IndexController extends Controller {
 			// 将传输来的Tag字符串，截取成数组
 			$tagArr = explode(',', $tags);
 			$Tag = M('Tag');
-			// 蝴蝶Tag.name数组
+			// 获得Tag.name数组
 			$tag_list = $Tag->getField('name', true);
 			foreach ($tagArr as $tag) {
 				// 循环比较
